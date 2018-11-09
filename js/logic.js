@@ -1,4 +1,4 @@
-//randomize cards order
+//randomize cards order (shuffle function font: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -29,11 +29,13 @@ cards.each(function(index){
 	$(this).addClass('order-'+order[index]);
 })
 
+//store number of clicks
+var clickCount = 0;
 
-var clickCount = 0;//store number of clicks
 
+//flip card
 $('.flipper').click(function(){
 	$(this).toggleClass('rotate');
 	clickCount++;
-	console.log(clickCount);
+	$('.moves').text(clickCount);
 });
