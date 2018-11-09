@@ -17,16 +17,14 @@ h1{
 	border-radius: 20px;
 	margin-top: 1em;
 	padding: 15px;
+	-webkit-box-shadow: 10px 10px 13px 0px #ababab;
+	        box-shadow: 10px 10px 13px 0px #ababab;
 }
 
 .back, .front{
 	border-radius: 10px;
 	height: 170px;
 	width: 100%;
-}
-
-.back{
-	background-color: #F39B6D;
 }
 
 .front{
@@ -57,6 +55,7 @@ h1{
             order: 13;
 }
 
+/* flipping cards based on https://davidwalsh.name/css-flip */
 /* entire container, keeps perspective */
 .flip-container {
 	margin: 15px 0;
@@ -76,8 +75,8 @@ h1{
 
 /* flip speed goes here */
 .flipper, .match {
-	-webkit-transition: 0.6s;
-	transition: 0.6s;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
 	-webkit-transform-style: preserve-3d;
 	        transform-style: preserve-3d;
 
@@ -108,6 +107,19 @@ h1{
 
 /* back, initially hidden pane */
 .back {
+	background-color: #F39B6D;
+	line-height: 13em;
+	text-align: center;
 	-webkit-transform: rotateY(180deg);
 	        transform: rotateY(180deg);
+}
+
+.back i {
+    color: #1D4765;
+    text-align: center;
+}
+
+.front, .back, .flipper{
+	-webkit-transition-timing-function: ease;
+	        transition-timing-function: ease;
 }

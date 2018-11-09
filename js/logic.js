@@ -36,20 +36,25 @@ var clickCount = 0;
 $('.game-board').on('click','.flipper',function(){
 	$(this).toggleClass('rotate');
 	clickCount++;
-	$('.moves').text(clickCount);
 	var cardContent = $('.rotate .back')
 		//checks if first or second card
-		if(clickCount%2 ===0 && typeof cardContent[1] !== 'undefined'){
+		if(clickCount%2 ===0){
+			//set the moves
+			$('.moves').text(clickCount/2);
 			//get card content for comparison
+			 if(typeof cardContent[1] !== 'undefined'){
 			var contentOne = cardContent[0].textContent;
 			var contentTwo = cardContent[1].textContent;
+			//match
 			if(contentOne === contentTwo){
 				$('.rotate').addClass('match');
 				$('.match').removeClass('flipper rotate');
+			//mismatch
 			}else{
 				setTimeout(function(){
 					$('.rotate').toggleClass('rotate');
 				},600)
 			}
+		}
 	}
 });
