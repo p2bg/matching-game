@@ -43,8 +43,8 @@ $('.game-board').on('click','.flipper',function(){
 			$('.moves').text(clickCount/2);
 			//get card content for comparison
 			 if(typeof cardContent[1] !== 'undefined'){
-			var contentOne = cardContent[0].textContent;
-			var contentTwo = cardContent[1].textContent;
+			var contentOne = cardContent[0].innerHTML;
+			var contentTwo = cardContent[1].innerHTML;
 			//match
 			if(contentOne === contentTwo){
 				$('.rotate').addClass('match');
@@ -58,3 +58,8 @@ $('.game-board').on('click','.flipper',function(){
 		}
 	}
 });
+
+//reload page
+$('.fa-redo-alt').click(function() {
+	location.reload();
+})

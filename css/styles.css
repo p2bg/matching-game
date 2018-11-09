@@ -15,20 +15,9 @@ h1{
 .game-board{
 	background-color: #381D2A;
 	border-radius: 20px;
-	margin-top: 1em;
 	padding: 15px;
 	-webkit-box-shadow: 10px 10px 13px 0px #ababab;
 	        box-shadow: 10px 10px 13px 0px #ababab;
-}
-
-.back, .front{
-	border-radius: 10px;
-	height: 170px;
-	width: 100%;
-}
-
-.front{
-	background-color: #3581B8;
 }
 
 .order-13 {
@@ -89,6 +78,9 @@ h1{
 
 /* hide back of pane during swap */
 .front, .back {
+	border-radius: 10px;
+	height: 170px;
+	width: 100%;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 
@@ -99,6 +91,7 @@ h1{
 
 /* front pane, placed above back */
 .front {
+	background-color: #3581B8;
 	z-index: 2;
 	/* for firefox 31 */
 	-webkit-transform: rotateY(0deg);
@@ -122,4 +115,9 @@ h1{
 .front, .back, .flipper{
 	-webkit-transition-timing-function: ease;
 	        transition-timing-function: ease;
+}
+
+.fa-redo-alt{
+	cursor: pointer;
+	line-height: 2em;
 }
