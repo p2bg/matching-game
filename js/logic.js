@@ -39,6 +39,7 @@ var matchs = 0;
 $('.game-board').on('click','.flipper',function(){
 	$(this).toggleClass('rotate');
 	clickCount++;
+	starCount(clickCount);
 	var cardContent = $('.rotate .back')
 		//checks if first or second card
 		if(clickCount%2 ===0){
@@ -54,7 +55,6 @@ $('.game-board').on('click','.flipper',function(){
 				$('.match').removeClass('flipper rotate');
 				matchs++;
 				gameStatus(matchs);
-				console.log(matchs);
 			//mismatch
 			}else{
 				setTimeout(function(){
@@ -74,15 +74,25 @@ $('.btn-primary').click(function() {
 	location.reload();
 })
 
-//checks if the game is hoverer
+//checks if the game is over
 function gameStatus(matchs){
 	if (matchs === 8){
+		//add stars count to congratulations screen
+		var stars = $('.fa-star');
+		$('.stars').text(stars.length);
 		//remove game board and stats from the screen
 		$('.game-board').remove();
 		$('.stats').remove();
 		//adds congratulation screen
 		$('.congrats').removeClass('d-none');
-	} else {
-		console.log('play along');
+	}
+}
+
+//change the number of stars based on number of moves
+function starCount(moves){
+	if(moves===20){
+		$('.stats p i:first-child').remove();
+	}else if(moves===30){
+		$('.stats p i:first-child').remove();
 	}
 }
