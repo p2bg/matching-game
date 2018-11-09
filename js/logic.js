@@ -32,10 +32,20 @@ cards.each(function(index){
 //store number of clicks
 var clickCount = 0;
 
-
 //flip card
-$('.flipper').click(function(){
+$('.game-board').on('click','.flipper',function(){
 	$(this).toggleClass('rotate');
 	clickCount++;
 	$('.moves').text(clickCount);
+	var cardContent = $('.rotate .back')
+		//checks if first or second card
+		if(clickCount%2 ===0 && typeof cardContent[1] !== 'undefined'){
+			//get card content for comparison
+			var contentOne = cardContent[0].textContent;
+			var contentTwo = cardContent[1].textContent;
+			if(contentOne === contentTwo){
+				$('.rotate').addClass('match');
+				$('.match').removeClass('flipper');
+			}
+	}
 });

@@ -75,13 +75,17 @@ h1{
 }
 
 /* flip speed goes here */
-.flipper {
+.flipper, .match {
 	-webkit-transition: 0.6s;
 	transition: 0.6s;
 	-webkit-transform-style: preserve-3d;
 	        transform-style: preserve-3d;
 
 	position: relative;
+}
+
+.flipper{
+	cursor: pointer;
 }
 
 /* hide back of pane during swap */
