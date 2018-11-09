@@ -25,12 +25,15 @@ order = shuffle(order);
 
 //apply random order
 var cards = $('.game-board>div');
+
 cards.each(function(index){
 	$(this).addClass('order-'+order[index]);
 })
 
 //store number of clicks
 var clickCount = 0;
+//store number of matchs
+var matchs = 0;
 
 //flip card
 $('.game-board').on('click','.flipper',function(){
@@ -49,6 +52,9 @@ $('.game-board').on('click','.flipper',function(){
 			if(contentOne === contentTwo){
 				$('.rotate').addClass('match');
 				$('.match').removeClass('flipper rotate');
+				matchs++;
+				gameStatus(matchs);
+				console.log(matchs);
 			//mismatch
 			}else{
 				setTimeout(function(){
@@ -63,3 +69,20 @@ $('.game-board').on('click','.flipper',function(){
 $('.fa-redo-alt').click(function() {
 	location.reload();
 })
+
+$('.btn-primary').click(function() {
+	location.reload();
+})
+
+//checks if the game is hoverer
+function gameStatus(matchs){
+	if (matchs === 8){
+		//remove game board and stats from the screen
+		$('.game-board').remove();
+		$('.stats').remove();
+		//adds congratulation screen
+		$('.congrats').removeClass('d-none');
+	} else {
+		console.log('play along');
+	}
+}
