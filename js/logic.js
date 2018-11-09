@@ -45,7 +45,11 @@ $('.game-board').on('click','.flipper',function(){
 			var contentTwo = cardContent[1].textContent;
 			if(contentOne === contentTwo){
 				$('.rotate').addClass('match');
-				$('.match').removeClass('flipper');
+				$('.match').removeClass('flipper rotate');
+			}else{
+				setTimeout(function(){
+					$('.rotate').toggleClass('rotate');
+				},600)
 			}
 	}
 });

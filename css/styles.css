@@ -64,7 +64,7 @@ h1{
 	        perspective: 1000px;
 }
 	/* flip the pane when hovered */
-.rotate {
+.rotate, .match {
 		-webkit-transform: rotateY(180deg);
 		        transform: rotateY(180deg);
 	}
