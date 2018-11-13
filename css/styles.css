@@ -5,7 +5,6 @@
 
 .container{
 	max-width: 860px;
-	margin-bottom: 3em;
 }
 
 h1{
@@ -13,7 +12,8 @@ h1{
 }
 
 .game-board{
-	background-color: #381D2A;
+	background: #6e5a64;
+	background: linear-gradient(135deg, #6e5a64 0%,#381d2a 100%);
 	border-radius: 20px;
 	padding: 15px;
 	-webkit-box-shadow: 10px 10px 13px 0px #ababab;
@@ -72,6 +72,26 @@ h1{
 	position: relative;
 }
 
+.wrong > .back{
+	background-color: #E9573E;
+	-webkit-backface-visibility: visible;
+	        backface-visibility: visible;
+}
+
+.wrong > .back i{
+	color: #F3A395;
+}
+
+.match> .back{
+	background-color: #AABD8C;
+	-webkit-backface-visibility: visible;
+	        backface-visibility: visible;
+}
+
+.match> .front, .wrong > .front{
+	display: none;
+}
+
 .flipper{
 	cursor: pointer;
 }
@@ -92,6 +112,7 @@ h1{
 /* front pane, placed above back */
 .front {
 	background-color: #3581B8;
+	color: transparent; /*Text in cards left for debuging and testing*/
 	z-index: 2;
 	/* for firefox 31 */
 	-webkit-transform: rotateY(0deg);
@@ -208,4 +229,45 @@ h1{
     -webkit-box-shadow: inset 0px 0px 0px 30px #7ac142;
             box-shadow: inset 0px 0px 0px 30px #7ac142;
   }
+}
+
+#timer{
+	font-family: 'Wallpoet', cursive;
+}
+
+@media (max-width: 576px){
+
+	.container{
+		width: 90%;
+	}
+
+	h1{
+		margin-top: 0.5em;
+		font-size: 2em;
+	}
+
+	.game-board{
+		padding: 0;
+	}
+
+	.flip-container{
+		height: 65px;
+	}
+
+	.front, .back{
+		height: 65px;
+	}
+
+	.back{
+		line-height: 5em;
+	}
+
+	.fa-5x{
+		font-size: 2em;
+	}
+
+	.display-4{
+		font-size:2.5em;
+	}
+
 }

@@ -1,3 +1,6 @@
+//avoid click if two cards are selected
+var cardsTurned = false;
+
 //randomize cards order (shuffle function font: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -37,30 +40,43 @@ var matchs = 0;
 
 //flip card
 $('.game-board').on('click','.flipper',function(){
-	$(this).toggleClass('rotate');
-	clickCount++;
-	starCount(clickCount);
-	var cardContent = $('.rotate .back')
-		//checks if first or second card
-		if(clickCount%2 ===0){
-			//set the moves
-			$('.moves').text(clickCount/2);
-			//get card content for comparison
-			 if(typeof cardContent[1] !== 'undefined'){
-			var contentOne = cardContent[0].innerHTML;
-			var contentTwo = cardContent[1].innerHTML;
-			//match
-			if(contentOne === contentTwo){
-				$('.rotate').addClass('match');
-				$('.match').removeClass('flipper rotate');
-				matchs++;
-				gameStatus(matchs);
-			//mismatch
-			}else{
-				setTimeout(function(){
-					$('.rotate').toggleClass('rotate');
-				},600)
+	if(!cardsTurned){
+		$(this).toggleClass('rotate');
+		clickCount++;
+		starCount(clickCount);
+		var cardContent = $('.rotate .back')
+			//checks if first or second card
+			if(clickCount%2 ===0){
+				cardsTurned = true;
+				console.log(cardsTurned);
+				//set the moves
+				$('.moves').text(clickCount/2);
+				//get card content for comparison
+				 if(typeof cardContent[1] !== 'undefined'){
+				var contentOne = cardContent[0].innerHTML;
+				var contentTwo = cardContent[1].innerHTML;
+				//match
+				if(contentOne === contentTwo){
+					setTimeout(function(){
+						$('.rotate').addClass('match animated flash faster');
+						$('.match').removeClass('flipper rotate');
+						matchs++;
+						gameStatus(matchs);
+					}, 600);
+				//mismatch
+				}else{
+					setTimeout(function(){
+						$('.rotate').toggleClass('wrong');
+						setTimeout(function() {
+							$('.rotate').toggleClass('rotate wrong');
+						},600);
+					},300);
+				}
 			}
+			setTimeout(function() {
+				cardsTurned = false;
+				console.log(cardsTurned);
+			},900);
 		}
 	}
 });
@@ -80,11 +96,17 @@ function gameStatus(matchs){
 		//add stars count to congratulations screen
 		var stars = $('.fa-star');
 		$('.stars').text(stars.length);
+		//add the time and then stop it
+		var time = $('#timer');
+		$('.time').text(time[0].textContent);
+		clearTimeout();
 		//remove game board and stats from the screen
-		$('.game-board').remove();
-		$('.stats').remove();
-		//adds congratulation screen
-		$('.congrats').removeClass('d-none');
+		setTimeout(function(){
+			$('.game-board').remove();
+			$('.stats').remove();
+			//adds congratulation screen
+			$('.congrats').removeClass('d-none');
+		},600);
 	}
 }
 
@@ -96,3 +118,26 @@ function starCount(moves){
 		$('.stats p i:first-child').remove();
 	}
 }
+
+//sets the timer, based on http://jsfiddle.net/gPrwW/1/
+$(document).ready(function (e) {
+    var $worked = $("#timer");
+
+    function update() {
+        var myTime = $worked.html();
+        var ss = myTime.split(":");
+        var dt = new Date();
+        dt.setHours(0);
+        dt.setMinutes(ss[0]);
+        dt.setSeconds(ss[1]);
+
+        var dt2 = new Date(dt.valueOf() + 1000);
+        var temp = dt2.toTimeString().split(" ");
+        var ts = temp[0].split(":");
+
+        $worked.html(ts[1]+":"+ts[2]);
+        setTimeout(update, 1000);
+    }
+
+    setTimeout(update, 1000);
+});

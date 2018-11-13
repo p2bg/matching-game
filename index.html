@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Wallpoet" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +18,7 @@
 	<div class="container">
 		<h1 class="text-center">Matching Game</h1>
 		<div class="row stats">
-			<p class="col-6 text-center"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><span class="moves">0</span> Moves</p><i class="fas fa-redo-alt col-6 text-center"></i>
+			<p class="col-4 text-center"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><span class="moves">0</span> Moves</p><i class="fas fa-redo-alt col-4 text-center"></i><p class="col-4" id="timer">00:00</p>
 		</div>
 			<div class="game-board row">
 				<div class="col-3 flip-container">
@@ -121,7 +122,7 @@
 				<div class="jumbotron text-center">
 					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
   				<h1 class="display-4 text-center">Congratulations! You Won!</h1>
-					  <p class="lead">With <span class="moves"> 00 </span> moves and <span class="stars"></span> Stars.</p>
+					  <p class="lead">With <span class="moves"> 00 </span> moves and <span class="stars"></span> Stars. You took <span class="time">00</span> to complete.</p>
 					  <hr class="my-4">
 					  <p>Wooooooo! <i class="fas fa-trophy fa-2x"></i></i></p>
 					  <a class="btn btn-primary btn-lg" href="#" role="button">Play Again</a>
