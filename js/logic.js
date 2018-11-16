@@ -49,8 +49,10 @@ cards.each(function(index){
 //flip card
 $('.game-board').on('click','.flipper',function(){
 	if(!cardsTurned){
-		$(this).toggleClass('rotate');
-		clickCount++;
+		//store the clicked card data
+		var cardCliked = $(this);
+		//rotate card and count click
+		rotate(cardCliked);
 		var cardContent = $('.rotate .back')
 			//checks if first or second card
 			if(clickCount%2 === 0){
@@ -115,6 +117,11 @@ function gameStatus(matchs){
 			$('.congrats').removeClass('d-none');
 		},600);
 	}
+}
+
+function rotate(cardCliked){
+	cardCliked.toggleClass('rotate');
+	clickCount++;
 }
 
 //change the number of stars based on number of moves
